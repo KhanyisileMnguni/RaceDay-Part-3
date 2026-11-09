@@ -40,6 +40,8 @@ CI/CD
 
 A GitHub Actions workflow (.github/workflows/validate-docs.yml) runs on every push and pull request to main,
 validating that the /docs folder exists and contains the ERD, API endpoint plan, and SQL script.
+<img width="1498" height="895" alt="Screenshot 2026-09-04 131118" src="https://github.com/user-attachments/assets/0aed4c0c-8383-484c-b506-a128097eef45" />
+
 
 # Part 2 - RaceDay RESTful API
 
