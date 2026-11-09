@@ -1,10 +1,10 @@
-## PART 1 - System Description
+# Part 1 - System Description
 
 RaceDay is a full-stack, web-based event management system built for the South African road running, walking, and cycling community.
 It replaces the paper-based registration, spreadsheets, and disconnected communication that many local road events
 (park runs, charity walks, community cycling events) currently rely on.
 
-The platform allows Event Organisers to create and manage events, define categories (for example, distance-based race categories), and capture participant results.
+The platform allows Event Organisers to create and manage events, define categories (e.g. distance-based race categories),and capture participant results.
 Participants can browse upcoming events, enter events by enrolling in a category, track their personal performance history across past events,
 and prepare for race day using live weather and route information.
 
@@ -40,6 +40,7 @@ CI/CD
 
 A GitHub Actions workflow (.github/workflows/validate-docs.yml) runs on every push and pull request to main,
 validating that the /docs folder exists and contains the ERD, API endpoint plan, and SQL script.
+
 <img width="1498" height="895" alt="Screenshot 2026-09-04 131118" src="https://github.com/user-attachments/assets/0aed4c0c-8383-484c-b506-a128097eef45" />
 
 
@@ -133,8 +134,9 @@ Setup and run:
    Update-Database
    ```
 5. Run `RaceDay.API` (https profile). Swagger opens at `https://localhost:<port>/swagger`.
-6. In Swagger, register a test account with the Organiser role and another with the Participant role. Log in with each account using `POST /api/auth/login`, then authorise requests with the JWT returned by the API (use the Authorize control or the `Authorization: Bearer <token>` header, as supported by the Swagger configuration). Test role-restricted endpoints with both roles. Use `POST /api/auth/logout` where available, or log out by ending the authenticated session/token according to the API implementation before switching accounts.
-
+6. In Swagger: `POST /api/auth/register`, then `POST /api/auth/login`. The browser keeps the session cookie,
+   so every later "Try it out" call in that tab is authenticated. Use `POST /api/auth/logout` to switch user.
+   
 Endpoints (from the Part 1 plan)
 | # | Method | Route | Access |
 |---|---|---|---|
@@ -196,7 +198,9 @@ From the solution folder:
 dotnet restore RaceDay.API.slnx
 dotnet test RaceDay.API.slnx --configuration Release
 ```
-The test project targets .NET 10 to match the API. Run the command above on a machine with the .NET 10 SDK installed. The test results recorded for this project are 5 passed, 0 failed, and 0 skipped; rerun the suite after making changes and confirm the GitHub Actions result.
+The test project uses the .NET 10 target framework to match the API. These tests still need to be run on a machine with the .NET 10 SDK installed; they have not been executed in this environment.
+Test Coverage
+The current local test run completed successfully with 5 tests passed, 0 failed, and 0 skipped.
 Authentication and Authorisation
 Protected endpoints require a valid JWT access token where authentication is enforced.
 
@@ -220,9 +224,7 @@ The RaceDay MVC web application is the front end for the Part 2 API. Organisers 
 enter and track road running, walking and cycling events. The site has **no database code and no business logic of its own**:
 every piece of data comes from the Part 2 API, and every image upload goes through the API into Azure Blob Storage.
 
-**Demo video (unlisted YouTube):** <ADD YOUR PART 3 VIDEO LINK HERE>
-
-> Keep the Part 2 video link above as evidence for the API assessment. The Part 3 video should demonstrate the complete MVC application running through Docker.
+Unlisted YouTube link:
 
 ## Features
 
@@ -239,11 +241,11 @@ every piece of data comes from the Part 2 API, and every image upload goes throu
 
 ## How the pieces fit together
 
+
 ```
 Browser  ->  RaceDay.MVC (ASP.NET Core MVC, session)  ->  RaceDay.API (REST, JWT, EF Core)  ->  SQL Server
                                                                     |
                                                                     +->  Azure Blob Storage (event banners, profile pictures)
-```
 
 * `RaceDay.MVC/Controllers` - one controller per area (Account, Home, Events, Participant, Organiser, Media).
 * `RaceDay.MVC/Services/ApiClient.cs` - the only class that calls the API. It adds the logged-in user's token and turns every failure into a friendly message.
@@ -251,65 +253,33 @@ Browser  ->  RaceDay.MVC (ASP.NET Core MVC, session)  ->  RaceDay.API (REST, JWT
 * `RaceDay.MVC/Views` - Razor views, with shared layout, alerts, event card and status badge.
 * `RaceDay.MVC/Models` - view models and simple copies of the API's responses.
 
-## Run the complete application with Docker Compose
+## Run everything with Docker (one command)
 
-### Requirements
+Requirements: Docker Desktop.
 
-- Docker Desktop with Docker Compose.
-- The repository's `.env` file, containing the required private configuration values.
-- A prepared `RaceDayDb` database in the SQL Server Docker volume. For a fresh installation, create/restore the database and apply the Part 2 database setup before using the application. Do not assume an empty SQL Server volume already contains the RaceDay tables.
+1. Create your private settings file from the template and fill in the values (it is ignored by git and must never be committed):
+   ```
+   Copy-Item .env.example .env
+   ```
+   (on macOS/Linux: `cp .env.example .env`). Set `RACEDAY_DB_PASSWORD`, `RACEDAY_JWT_KEY` and, for image uploads,
+   `RACEDAY_AZURE_CONNECTION_STRING` (from the Azure portal: your storage account > Security + networking > Access keys).
+2. From the repository root, start SQL Server, the API and the MVC site:
+   ```
+   docker compose up --build
+   ```
+3. Open the site at **http://localhost:8080** and the API's Swagger page at **http://localhost:5285/swagger**.
 
-### Configure private settings
+The API creates the database tables automatically the first time it starts. Stop everything with `Ctrl+C`, or `docker compose down`.
+The containerised site behaves the same as the one started from Visual Studio; only the API address differs, and it is passed in with the
+`ApiSettings__BaseUrl` environment variable.
 
-Create a `.env` file in the repository root. Do not commit this file. It must contain the variables referenced by `docker-compose.yml`:
+### Run only the MVC site in Docker (API running on your computer)
 
-```dotenv
-RACEDAY_DB_PASSWORD=REPLACE_WITH_YOUR_SQL_SERVER_PASSWORD
-RACEDAY_JWT_KEY=REPLACE_WITH_A_RANDOM_SECRET_AT_LEAST_32_CHARACTERS
-RACEDAY_AZURE_CONNECTION_STRING=REPLACE_WITH_YOUR_AZURE_STORAGE_CONNECTION_STRING
 ```
-
-Use your own values. Never paste real passwords, JWT signing keys, or Azure connection strings into this README or commit them to GitHub. If a `.env.example` template is included in the repository, copy it to `.env` and fill in the local values.
-
-### Start the containers
-
-Run these commands from the repository root:
-
-```powershell
-docker compose up --build -d
-docker compose ps
-```
-
-The Compose setup starts the SQL Server database, the Part 2 API, and the Part 3 MVC application.
-
-- **RaceDay MVC website:** http://localhost:8080
-- **RaceDay API Swagger:** http://localhost:5285/swagger
-- **SQL Server (for SSMS):** `localhost,1433`
-
-To view container logs:
-
-```powershell
-docker compose logs -f
-```
-
-To stop the containers without deleting the database volume:
-
-```powershell
-docker compose down
-```
-
-**Important:** Do not use `docker compose down -v` for normal shutdown. The `-v` option removes Compose-managed volumes and can delete the SQL Server data stored in them. Keep the database volume when stopping or restarting the application.
-
-### Run only the MVC site in Docker (API running on the host)
-
-This is an alternative development setup, not the full three-container demonstration. Start the API on the host first, then run:
-
-```powershell
+dotnet run --project RaceDay.API --urls "http://0.0.0.0:5285"
 docker build -t raceday-mvc ./RaceDay.MVC
 docker run --rm -p 8080:8080 -e ApiSettings__BaseUrl=http://host.docker.internal:5285/ raceday-mvc
 ```
-
-The MVC container uses `host.docker.internal` to reach an API running on the host machine.
 
 ## Run it locally (without Docker)
 
@@ -320,36 +290,67 @@ The MVC container uses `host.docker.internal` to reach an API running on the hos
    ```
 3. `RaceDay.MVC/appsettings.json` already points at the API (`"ApiSettings": { "BaseUrl": "http://localhost:5285/" }`). Run `RaceDay.MVC`.
 
-## Part 2 feedback and demonstration evidence
+## First steps once it is running
 
-The Part 2 formative feedback awarded **90/100**. The lecturer specifically asked for the video presentation to show:
+The database starts empty, so create your own test users:
 
-- API registration and login for both account roles: **Participant** and **Organiser**.
-- Logout and switching between authenticated users.
-- Relevant database information from SQL Server Management Studio (SSMS).
+1. Open **http://localhost:8080** and click **Join RaceDay**.
+2. Register an **Organiser** (choose "Run events (Organiser)"). Log in. You land on the Organiser dashboard.
+3. Create an event with a banner image, then add one or more categories.
+4. Log out, register a **Participant** (choose "Enter events (Participant)"), log in, open the event and click **Enter event**.
+5. Log back in as the Organiser, open **Enrolments**, then **Results**, and capture the Participant's finish time and position.
+6. Log in as the Participant again and open **My Results** to see the result, for example "1st of 1 finishers".
 
-Use the following demonstration sequence when recording the Part 2/API portion of the video:
+Image uploads need a valid `RACEDAY_AZURE_CONNECTION_STRING` in `.env`. Without it the site still works but uploading a banner or profile picture shows an error.
 
-1. Open the Part 2 API Swagger page.
-2. Register a Participant account and show the successful response.
-3. Register an Organiser account and show the successful response.
-4. Log in as the Participant and demonstrate an endpoint available to that role.
-5. Log out or end that authenticated session, then log in as the Organiser.
-6. Demonstrate an Organiser-only endpoint and show that role restrictions are enforced.
-7. Show the logout process and explain that the authenticated session/token is ended before changing users.
-8. Open SSMS and connect to the Docker SQL Server instance at `localhost,1433` using SQL Server Authentication. Use the local `sa` password stored privately in the `.env` file; never put the password in the README or video.
-9. Expand `RaceDayDb` and show the database tables and relevant records. The restored database used during development contains the tables `Organiser`, `Participant`, `Event`, `Category`, `Enrolment`, and `Result`, together with the EF Core migrations history table.
+## Viewing the database in SSMS
 
-For Part 3, continue the video by showing the MVC application, its role-specific navigation and features, the API/Blob Storage flow, and the application running through Docker Compose. The Part 3 video link must be added above before submission.
+The SQL Server container is published on this computer's port 1433, so SQL Server Management Studio can connect to it:
+
+| Setting | Value |
+|---|---|
+| Server name | `localhost,1433` |
+| Authentication | SQL Server Authentication |
+| Login | `sa` |
+| Password | the value of `RACEDAY_DB_PASSWORD` in your `.env` |
+| Options | tick **Trust server certificate** |
+| Database | `RaceDayDb` |
+
+Useful queries:
+
+```sql
+SELECT OrganiserID, Name, Email, Password FROM Organiser;      -- Password is a salted hash, never plain text
+SELECT ParticipantID, Name, Email, Password, ProfilePictureUrl FROM Participant;
+SELECT EventID, EventName, EventDate, BannerUrl FROM Event;    -- BannerUrl is the Azure Blob Storage URL
+SELECT * FROM Category;
+SELECT * FROM Enrolment;
+SELECT * FROM Result;
+```
+
+## Troubleshooting
+
+* **Changed some code?** Rebuild and recreate the containers: `docker compose up -d --build`. Building the image alone does not replace a container that is already running.
+* **Want a clean database?** `docker compose down -v` removes the containers and the SQL Server data volume.
+* **Site loads but says it cannot reach the RaceDay service?** Check `docker compose ps`. The API container must be running (it waits for SQL Server and retries for about 90 seconds on first start).
+* **Port already in use?** Stop whatever uses 8080, 5285 or 1433, or change the left-hand port numbers in `docker-compose.yml`.
+
+## Part 2 feedback and how Part 3 addresses it
+
+| Part 2 feedback | What was done / where to see it |
+|---|---|
+| Enforce the correct role on every endpoint | Every API endpoint carries `[Authorize(Roles = ...)]` or `[AllowAnonymous]`, and owner-only actions return 403 for other users. The MVC site adds `[SessionAuthorize("Organiser" / "Participant")]` on top, so each role only reaches its own pages. |
+| Confirm password hashing | Passwords are hashed with ASP.NET's salted PBKDF2 hasher (`PasswordService`). The `Password` columns in SSMS contain hashes only. |
+| Show registration and login for both roles, logout, and the database | Registration and login for both roles are in the MVC site; logout clears the session and revokes the JWT on the API; the SSMS section above shows how to inspect the data. |
+| Keep CI running tests | `.github/workflows/ci.yml` builds the API, tests and MVC site and runs the tests on every push. |
 
 ## GitHub Actions
 
 `.github/workflows/ci.yml` runs on every push and pull request. It validates the repository structure (and checks that no secrets file is committed),
-builds the API, tests and MVC site, runs all unit tests, validates `docker-compose.yml` and builds both Docker images.
+builds the API, tests and MVC site, runs all tests, validates `docker-compose.yml` and builds both Docker images.
 
 Screenshot of a successful green build:
 
-<ADD A SCREENSHOT OF THE SUCCESSFUL PART 3 GITHUB ACTIONS RUN HERE>
+<PASTE YOUR CI SCREENSHOT HERE>
 
 ## Security notes
 
