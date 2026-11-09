@@ -1,2 +1,15 @@
-env 
-env.*
+# Visual Studio
+.vs/
+**/.vs/
+
+# Build output
+**/bin/
+**/obj/
+
+# Environment secrets
+.env
+**/.env
+*.env
+
+# Database backups
+*.bak
