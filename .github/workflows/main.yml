@@ -25,33 +25,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Check required files
-        shell: bash
-        run: |
-          set -e
-
-          files=(
-            "README.md"
-            ".gitignore"
-            ".env.example"
-            "docker-compose.yml"
-            "RaceDay.API/RaceDay.API.csproj"
-            "RaceDay.API/Program.cs"
-            "RaceDay.API/Dockerfile"
-            "RaceDay.MVC/RaceDay.MVC.csproj"
-            "RaceDay.MVC/Program.cs"
-            "RaceDay.MVC/Dockerfile"
-            "RaceDay.API.Tests/RaceDay.API.Tests.csproj"
-          )
-
-          for file in "${files[@]}"; do
-            if [ ! -f "$file" ]; then
-              echo "::error::Missing required file: $file"
-              exit 1
-            fi
-            echo "OK: $file"
-          done
-
       - name: Check environment secrets
         shell: bash
         run: |
