@@ -192,3 +192,8 @@ public class ResultInputModel
     public int? Position { get; set; }
     public string Status { get; set; } = "Finished";
 }
+
+// Alias so old Views that expect CategoryViewModel still work
+public class CategoryViewModel : CategoryFormViewModel
+{
+}
