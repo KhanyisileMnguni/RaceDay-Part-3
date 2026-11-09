@@ -316,6 +316,53 @@ SELECT * FROM Category;
 SELECT * FROM Enrolment;
 SELECT * FROM Result;
 
+### Database running in Docker (evidence)
+
+The screenshots below were taken in SSMS connected to the SQL Server container (`localhost,1433`, login `sa`).
+`RaceDayDb` is online and contains the six RaceDay tables plus EF Core's migrations history table, which is created
+automatically by the API's migrations when the containers start.
+<img width="626" height="967" alt="Screenshot 2026-11-07 150654" src="https://github.com/user-attachments/assets/c95eb68a-ef91-40dd-8e8c-614be122b020" />
+<img width="1592" height="1003" alt="Screenshot 2026-11-07 150444" src="https://github.com/user-attachments/assets/7207de8b-2c3f-4565-9dda-f10e4a291df5" />
+<img width="758" height="956" alt="Screenshot 2026-11-07 150255" src="https://github.com/user-attachments/assets/d3712b82-e71e-4b46-bc2d-7ac172f069ac" />
+<img width="1605" height="965" alt="Screenshot 2026-11-07 150248" src="https://github.com/user-attachments/assets/be0540f9-f18d-4347-994c-2a7445eae0f7" />
+
+Row counts while testing the application (the numbers change as you use the site):
+
+| Table | Rows |
+|---|---|
+| Organiser | 5 |
+| Participant | 7 |
+| Event | 1 |
+| Category | 1 |
+| Enrolment | 2 |
+| Result | 1 |
+
+<img width="1062" height="980" alt="Screenshot 2026-11-07 151054" src="https://github.com/user-attachments/assets/06edb78a-094f-4ee4-8383-2bca3bdaa6d9" />
+<img width="637" height="971" alt="Screenshot 2026-11-07 150831" src="https://github.com/user-attachments/assets/409e54ef-f991-4a06-ad38-98cd6a3c3bb5" />
+
+The data was created through the MVC site, which calls the API, which writes to this database.
+
+### Optional: loading an existing database backup
+
+A fresh start has an empty database. To load a previous `.bak` file into the container instead
+(the backup is not stored in this repository):
+
+docker exec raceday-db mkdir -p /var/opt/mssql/backup
+docker cp RaceDay.bak raceday-db:/var/opt/mssql/backup/RaceDay.bak
+
+Then run this in SSMS (connected to `localhost,1433`):
+
+USE master;
+GO
+RESTORE DATABASE RaceDayDb
+FROM DISK = '/var/opt/mssql/backup/RaceDay.bak'
+WITH MOVE 'RaceDayDb'     TO '/var/opt/mssql/data/RaceDayDb.mdf',
+     MOVE 'RaceDayDb_log' TO '/var/opt/mssql/data/RaceDayDb_log.ldf',
+     REPLACE, RECOVERY, STATS = 10;
+GO
+
+This works because the backup already contains the EF Core migrations history, so the API recognises the schema.
+
 ## Troubleshooting
 
 * **Changed some code?** Rebuild and recreate the containers: `docker compose up -d --build`. Building the image alone does not replace a container that is already running.
