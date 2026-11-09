@@ -1,0 +1,130 @@
+name: RaceDay CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+
+jobs:
+
+  # 1. Check required project files
+  validate-structure:
+    name: Validate project structure
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check required files
+        shell: bash
+        run: |
+          set -e
+
+          files=(
+            "README.md"
+            ".gitignore"
+            ".env.example"
+            "docker-compose.yml"
+            "RaceDay.API/RaceDay.API.csproj"
+            "RaceDay.API/Program.cs"
+            "RaceDay.API/Dockerfile"
+            "RaceDay.MVC/RaceDay.MVC.csproj"
+            "RaceDay.MVC/Program.cs"
+            "RaceDay.MVC/Dockerfile"
+            "RaceDay.API.Tests/RaceDay.API.Tests.csproj"
+          )
+
+          for file in "${files[@]}"; do
+            if [ ! -f "$file" ]; then
+              echo "::error::Missing required file: $file"
+              exit 1
+            fi
+            echo "OK: $file"
+          done
+
+      - name: Check that environment secrets are not committed
+        shell: bash
+        run: |
+          if git ls-files | grep -E '(^|/)\.env$'; then
+            echo "::error::A .env file is tracked. Remove it from Git."
+            exit 1
+          fi
+
+          echo "No tracked .env files found."
+
+  # 2. Build and test the API
+  build-and-test:
+    name: Build API and run tests
+    needs: validate-structure
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restore API and test dependencies
+        run: dotnet restore RaceDay.API.Tests/RaceDay.API.Tests.csproj
+
+      - name: Build API and test project
+        run: dotnet build RaceDay.API.Tests/RaceDay.API.Tests.csproj --configuration Release --no-restore
+
+      - name: Run API unit tests
+        run: dotnet test RaceDay.API.Tests/RaceDay.API.Tests.csproj --configuration Release --no-build --verbosity normal
+
+  # 3. Build the MVC application
+  build-mvc:
+    name: Build MVC application
+    needs: validate-structure
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restore MVC dependencies
+        run: dotnet restore RaceDay.MVC/RaceDay.MVC.csproj
+
+      - name: Build MVC application
+        run: dotnet build RaceDay.MVC/RaceDay.MVC.csproj --configuration Release --no-restore
+
+  # 4. Validate Docker configuration and build images
+  docker-build:
+    name: Validate Docker and build images
+    needs: validate-structure
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate Docker Compose configuration
+        env:
+          RACEDAY_DB_PASSWORD: CI-check-Password123!
+          RACEDAY_JWT_KEY: CI-check-jwt-key-with-at-least-32-characters
+          RACEDAY_AZURE_CONNECTION_STRING: DefaultEndpointsProtocol=https;AccountName=ci;AccountKey=Y2ktcGxhY2Vob2xkZXI=;EndpointSuffix=core.windows.net
+        run: docker compose config --quiet
+
+      - name: Build API Docker image
+        run: docker build -f RaceDay.API/Dockerfile -t raceday-api .
+
+      - name: Build MVC Docker image
+        run: docker build -f Dockerfile -t raceday-mvc ./RaceDay.MVC
