@@ -1,4 +1,5 @@
-name: RaceDay CI
+
+name: RaceDay Part 3 CI
 
 on:
   push:
@@ -15,9 +16,9 @@ env:
 
 jobs:
 
-  # 1. Check required project files
+  # 1. Validate the Part 3 project structure
   validate-structure:
-    name: Validate project structure
+    name: Validate Part 3 structure
     runs-on: ubuntu-latest
 
     steps:
@@ -51,15 +52,14 @@ jobs:
             echo "OK: $file"
           done
 
-      - name: Check that environment secrets are not committed
+      - name: Check environment secrets
         shell: bash
         run: |
           if git ls-files | grep -E '(^|/)\.env$'; then
-            echo "::error::A .env file is tracked. Remove it from Git."
+            echo "::error::.env must not be committed."
             exit 1
           fi
-
-          echo "No tracked .env files found."
+          echo "No committed .env files found."
 
   # 2. Build and test the API
   build-and-test:
@@ -76,10 +76,10 @@ jobs:
         with:
           dotnet-version: 10.0.x
 
-      - name: Restore API and test dependencies
+      - name: Restore dependencies
         run: dotnet restore RaceDay.API.Tests/RaceDay.API.Tests.csproj
 
-      - name: Build API and test project
+      - name: Build API and tests
         run: dotnet build RaceDay.API.Tests/RaceDay.API.Tests.csproj --configuration Release --no-restore
 
       - name: Run API unit tests
@@ -103,12 +103,12 @@ jobs:
       - name: Restore MVC dependencies
         run: dotnet restore RaceDay.MVC/RaceDay.MVC.csproj
 
-      - name: Build MVC application
+      - name: Build MVC
         run: dotnet build RaceDay.MVC/RaceDay.MVC.csproj --configuration Release --no-restore
 
-  # 4. Validate Docker configuration and build images
+  # 4. Validate Docker and build both images
   docker-build:
-    name: Validate Docker and build images
+    name: Docker validation and build
     needs: validate-structure
     runs-on: ubuntu-latest
 
@@ -116,7 +116,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Validate Docker Compose configuration
+      - name: Validate Docker Compose
         env:
           RACEDAY_DB_PASSWORD: CI-check-Password123!
           RACEDAY_JWT_KEY: CI-check-jwt-key-with-at-least-32-characters
@@ -127,4 +127,4 @@ jobs:
         run: docker build -f RaceDay.API/Dockerfile -t raceday-api .
 
       - name: Build MVC Docker image
-        run: docker build -f Dockerfile -t raceday-mvc ./RaceDay.MVC
+        run: docker build -f RaceDay.MVC/Dockerfile -t raceday-mvc ./RaceDay.MVC
