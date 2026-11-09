@@ -1,5 +1,4 @@
-﻿
-# Stage 1: Build and publish
+﻿# Stage 1: Build and publish
 using Microsoft.EntityFrameworkCore.Infrastructure;
 
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
