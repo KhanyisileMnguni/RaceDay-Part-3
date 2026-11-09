@@ -241,8 +241,6 @@ Unlisted YouTube link:
 
 ## How the pieces fit together
 
-
-```
 Browser  ->  RaceDay.MVC (ASP.NET Core MVC, session)  ->  RaceDay.API (REST, JWT, EF Core)  ->  SQL Server
                                                                     |
                                                                     +->  Azure Blob Storage (event banners, profile pictures)
@@ -258,15 +256,11 @@ Browser  ->  RaceDay.MVC (ASP.NET Core MVC, session)  ->  RaceDay.API (REST, JWT
 Requirements: Docker Desktop.
 
 1. Create your private settings file from the template and fill in the values (it is ignored by git and must never be committed):
-   ```
    Copy-Item .env.example .env
-   ```
    (on macOS/Linux: `cp .env.example .env`). Set `RACEDAY_DB_PASSWORD`, `RACEDAY_JWT_KEY` and, for image uploads,
    `RACEDAY_AZURE_CONNECTION_STRING` (from the Azure portal: your storage account > Security + networking > Access keys).
 2. From the repository root, start SQL Server, the API and the MVC site:
-   ```
    docker compose up --build
-   ```
 3. Open the site at **http://localhost:8080** and the API's Swagger page at **http://localhost:5285/swagger**.
 
 The API creates the database tables automatically the first time it starts. Stop everything with `Ctrl+C`, or `docker compose down`.
@@ -275,19 +269,16 @@ The containerised site behaves the same as the one started from Visual Studio; o
 
 ### Run only the MVC site in Docker (API running on your computer)
 
-```
 dotnet run --project RaceDay.API --urls "http://0.0.0.0:5285"
 docker build -t raceday-mvc ./RaceDay.MVC
 docker run --rm -p 8080:8080 -e ApiSettings__BaseUrl=http://host.docker.internal:5285/ raceday-mvc
-```
+
 
 ## Run it locally (without Docker)
 
 1. Start the API with Visual Studio (http or https profile) or `dotnet run --project RaceDay.API`.
 2. Store the Azure Storage connection string for the API (it is never committed):
-   ```
    dotnet user-secrets set "AzureBlobStorage:ConnectionString" "<your connection string>" --project RaceDay.API
-   ```
 3. `RaceDay.MVC/appsettings.json` already points at the API (`"ApiSettings": { "BaseUrl": "http://localhost:5285/" }`). Run `RaceDay.MVC`.
 
 ## First steps once it is running
@@ -316,16 +307,14 @@ The SQL Server container is published on this computer's port 1433, so SQL Serve
 | Options | tick **Trust server certificate** |
 | Database | `RaceDayDb` |
 
-Useful queries:
+Useful sql queries:
 
-```sql
 SELECT OrganiserID, Name, Email, Password FROM Organiser;      -- Password is a salted hash, never plain text
 SELECT ParticipantID, Name, Email, Password, ProfilePictureUrl FROM Participant;
 SELECT EventID, EventName, EventDate, BannerUrl FROM Event;    -- BannerUrl is the Azure Blob Storage URL
 SELECT * FROM Category;
 SELECT * FROM Enrolment;
 SELECT * FROM Result;
-```
 
 ## Troubleshooting
 
