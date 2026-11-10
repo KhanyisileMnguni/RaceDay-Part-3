@@ -219,6 +219,7 @@ YouTube Video link:
 https://youtu.be/05gTS_h3Tv8
 
 # Part 3 - RaceDay Web Application (ASP.NET Core MVC, Azure Blob Storage, Docker)
+{Had internet issues, video could not upload. Included screenshots of the Azure Blob Storage that is called in SSMS as well as what the site (MVC) contains}
 
 The RaceDay MVC web application is the front end for the Part 2 API. Organisers and Participants use it to create, browse,
 enter and track road running, walking and cycling events. The site has **no database code and no business logic of its own**:
@@ -254,6 +255,7 @@ Browser  ->  RaceDay.MVC (ASP.NET Core MVC, session)  ->  RaceDay.API (REST, JWT
 ## Run everything with Docker (one command)
 
 Requirements: Docker Desktop.
+<img width="952" height="1030" alt="Screenshot 2026-11-09 142412" src="https://github.com/user-attachments/assets/5b4eda4a-32a0-4140-9a1b-ff6f9cdcdce3" />
 
 1. Create your private settings file from the template and fill in the values (it is ignored by git and must never be committed):
    Copy-Item .env.example .env
@@ -272,7 +274,11 @@ The containerised site behaves the same as the one started from Visual Studio; o
 dotnet run --project RaceDay.API --urls "http://0.0.0.0:5285"
 docker build -t raceday-mvc ./RaceDay.MVC
 docker run --rm -p 8080:8080 -e ApiSettings__BaseUrl=http://host.docker.internal:5285/ raceday-mvc
-
+<img width="931" height="1042" alt="Screenshot 2026-11-09 142454" src="https://github.com/user-attachments/assets/5a0419a5-6ff9-41bc-aee8-33bb4b004b4d" />
+<img width="763" height="1032" alt="Screenshot 2026-11-09 142444" src="https://github.com/user-attachments/assets/96b796d8-4870-4e75-8549-c8ce1c50b277" />
+<img width="837" height="1041" alt="Screenshot 2026-11-09 142436" src="https://github.com/user-attachments/assets/990e8a6a-e1cd-46e3-ae60-6c0a412dee5d" />
+<img width="927" height="887" alt="Screenshot 2026-11-09 142419" src="https://github.com/user-attachments/assets/6b085495-a129-46a2-8efc-1ff14cbeff13" />
+<img width="952" height="1030" alt="Screenshot 2026-11-09 142412" src="https://github.com/user-attachments/assets/94c3a865-d258-46ad-83bc-73b7fc05ff90" />
 
 ## Run it locally (without Docker)
 
@@ -308,12 +314,24 @@ The SQL Server container is published on this computer's port 1433, so SQL Serve
 | Database | `RaceDayDb` |
 
 Useful sql queries:
-
+<img width="1022" height="940" alt="Screenshot 2026-11-09 185946" src="https://github.com/user-attachments/assets/3d2b7fba-e427-47f3-9e26-0d9f2f8dea80" />
 SELECT OrganiserID, Name, Email, Password FROM Organiser;      -- Password is a salted hash, never plain text
+
+<img width="1236" height="902" alt="Screenshot 2026-11-09 185955" src="https://github.com/user-attachments/assets/e606dec4-ecbb-4400-9d8d-b68872a46041" />
 SELECT ParticipantID, Name, Email, Password, ProfilePictureUrl FROM Participant;
-SELECT EventID, EventName, EventDate, BannerUrl FROM Event;    -- BannerUrl is the Azure Blob Storage URL
+
+<img width="1142" height="977" alt="Screenshot 2026-11-09 190002" src="https://github.com/user-attachments/assets/d14697ae-edde-474e-b1c7-1863d0607f85" />
+<img width="852" height="976" alt="Screenshot 2026-11-09 190041" src="https://github.com/user-attachments/assets/5bf77b4c-52cf-44e2-91ee-f184686978ec" />
+SELECT EventID, EventName, EventDate, BannerUrl FROM Event;    -- BannerUrl is the Azure Blob 
+Storage URL
+
+<img width="662" height="841" alt="Screenshot 2026-11-09 190014" src="https://github.com/user-attachments/assets/d566ce7a-684b-4ca8-b29d-19bfe90619ce" />
 SELECT * FROM Category;
+
+<img width="623" height="980" alt="Screenshot 2026-11-09 190025" src="https://github.com/user-attachments/assets/89669ec6-4fae-4892-b25c-dd6cf7e18618" />
 SELECT * FROM Enrolment;
+
+<img width="665" height="1012" alt="Screenshot 2026-11-09 190034" src="https://github.com/user-attachments/assets/ad0c7738-dafc-4b2c-b31a-5f8d98f12a68" />
 SELECT * FROM Result;
 
 ### Database running in Docker (evidence)
