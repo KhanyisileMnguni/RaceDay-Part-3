@@ -384,10 +384,6 @@ This works because the backup already contains the EF Core migrations history, s
 `.github/workflows/ci.yml` runs on every push and pull request. It validates the repository structure (and checks that no secrets file is committed),
 builds the API, tests and MVC site, runs all tests, validates `docker-compose.yml` and builds both Docker images.
 
-Screenshot of a successful green build:
-
-<PASTE YOUR CI SCREENSHOT HERE>
-
 ## Security notes
 
 * Passwords are stored as salted hashes. The browser only holds a session cookie; the JWT stays on the server in the session.
