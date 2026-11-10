@@ -3,6 +3,26 @@
   "WorkspaceRootPath": "C:\\Users\\mngun\\OneDrive\\Documents\\GitHub\\RaceDay-Part-3\\RaceDay.API\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A518181A-8239-4C81-B028-760293D9932C}|..\\RaceDay.MVC\\RaceDay.MVC.csproj|c:\\users\\mngun\\onedrive\\documents\\github\\raceday-part-3\\raceday.mvc\\infrastructure\\sessionauthorizeattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A518181A-8239-4C81-B028-760293D9932C}|..\\RaceDay.MVC\\RaceDay.MVC.csproj|c:\\users\\mngun\\onedrive\\documents\\github\\raceday-part-3\\raceday.mvc\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55F079E8-67D4-607E-20AE-362B3FCC3B89}|RaceDay.API.csproj|c:\\users\\mngun\\onedrive\\documents\\github\\raceday-part-3\\raceday.api\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{55F079E8-67D4-607E-20AE-362B3FCC3B89}|RaceDay.API.csproj|solutionrelative:dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mngun\\OneDrive\\Documents\\GitHub\\prog6212-p1-p2-p3-KhanyisileMnguni\\RaceDay.MVC\\Services\\ApiClient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A518181A-8239-4C81-B028-760293D9932C}|..\\RaceDay.MVC\\RaceDay.MVC.csproj|c:\\users\\mngun\\onedrive\\documents\\github\\raceday-part-3\\raceday.mvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55F079E8-67D4-607E-20AE-362B3FCC3B89}|RaceDay.API.csproj|c:\\users\\mngun\\onedrive\\documents\\github\\raceday-part-3\\raceday.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55F079E8-67D4-607E-20AE-362B3FCC3B89}|RaceDay.API.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mngun\\OneDrive\\Documents\\GitHub\\prog6212-p1-p2-p3-KhanyisileMnguni\\RaceDay.MVC\\Views\\Events\\Index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
@@ -21,17 +41,6 @@
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mngun\\OneDrive\\Documents\\GitHub\\prog6212-p1-p2-p3-KhanyisileMnguni\\RaceDay.MVC\\.dockerignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mngun\\OneDrive\\Documents\\GitHub\\prog6212-p1-p2-p3-KhanyisileMnguni\\RaceDay.MVC\\Services\\ApiClient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{55F079E8-67D4-607E-20AE-362B3FCC3B89}|RaceDay.API.csproj|c:\\users\\mngun\\onedrive\\documents\\github\\raceday-part-3\\raceday.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55F079E8-67D4-607E-20AE-362B3FCC3B89}|RaceDay.API.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{55F079E8-67D4-607E-20AE-362B3FCC3B89}|RaceDay.API.csproj|c:\\users\\mngun\\onedrive\\documents\\github\\raceday-part-3\\raceday.api\\dockerfile||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55F079E8-67D4-607E-20AE-362B3FCC3B89}|RaceDay.API.csproj|solutionrelative:dockerfile||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mngun\\OneDrive\\Documents\\GitHub\\prog6212-p1-p2-p3-KhanyisileMnguni\\RaceDay.MVC\\Views\\Dashboard\\Participant.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
@@ -45,7 +54,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 264,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -57,50 +66,93 @@
             },
             {
               "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 0,
+              "Title": "SessionAuthorizeAttribute.cs",
+              "DocumentMoniker": "C:\\Users\\mngun\\OneDrive\\Documents\\GitHub\\RaceDay-Part-3\\RaceDay.MVC\\Infrastructure\\SessionAuthorizeAttribute.cs",
+              "RelativeDocumentMoniker": "..\\RaceDay.MVC\\Infrastructure\\SessionAuthorizeAttribute.cs",
+              "ToolTip": "C:\\Users\\mngun\\OneDrive\\Documents\\GitHub\\RaceDay-Part-3\\RaceDay.MVC\\Infrastructure\\SessionAuthorizeAttribute.cs",
+              "RelativeToolTip": "..\\RaceDay.MVC\\Infrastructure\\SessionAuthorizeAttribute.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-09T16:40:23.124Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Dockerfile",
+              "DocumentMoniker": "C:\\Users\\mngun\\OneDrive\\Documents\\GitHub\\RaceDay-Part-3\\RaceDay.MVC\\Dockerfile",
+              "RelativeDocumentMoniker": "..\\RaceDay.MVC\\Dockerfile",
+              "ToolTip": "C:\\Users\\mngun\\OneDrive\\Documents\\GitHub\\RaceDay-Part-3\\RaceDay.MVC\\Dockerfile",
+              "RelativeToolTip": "..\\RaceDay.MVC\\Dockerfile",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-11-09T16:39:36.779Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Dockerfile",
               "DocumentMoniker": "C:\\Users\\mngun\\OneDrive\\Documents\\GitHub\\RaceDay-Part-3\\RaceDay.API\\Dockerfile",
               "RelativeDocumentMoniker": "Dockerfile",
               "ToolTip": "C:\\Users\\mngun\\OneDrive\\Documents\\GitHub\\RaceDay-Part-3\\RaceDay.API\\Dockerfile",
               "RelativeToolTip": "Dockerfile",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-11-07T13:39:36.686Z",
+              "WhenOpened": "2026-11-09T16:39:28.971Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\mngun\\OneDrive\\Documents\\GitHub\\RaceDay-Part-3\\RaceDay.MVC\\Program.cs",
+              "RelativeDocumentMoniker": "..\\RaceDay.MVC\\Program.cs",
+              "ToolTip": "C:\\Users\\mngun\\OneDrive\\Documents\\GitHub\\RaceDay-Part-3\\RaceDay.MVC\\Program.cs",
+              "RelativeToolTip": "..\\RaceDay.MVC\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-09T16:37:49.019Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "ApiClient.cs",
               "DocumentMoniker": "C:\\Users\\mngun\\OneDrive\\Documents\\GitHub\\prog6212-p1-p2-p3-KhanyisileMnguni\\RaceDay.MVC\\Services\\ApiClient.cs",
               "RelativeDocumentMoniker": "..\\..\\prog6212-p1-p2-p3-KhanyisileMnguni\\RaceDay.MVC\\Services\\ApiClient.cs",
               "ToolTip": "C:\\Users\\mngun\\OneDrive\\Documents\\GitHub\\prog6212-p1-p2-p3-KhanyisileMnguni\\RaceDay.MVC\\Services\\ApiClient.cs",
               "RelativeToolTip": "..\\..\\prog6212-p1-p2-p3-KhanyisileMnguni\\RaceDay.MVC\\Services\\ApiClient.cs",
-              "ViewState": "AgIAAJgAAAAAAAAAAAAAAKwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-11-07T13:28:43.522Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 5,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\mngun\\OneDrive\\Documents\\GitHub\\RaceDay-Part-3\\RaceDay.API\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\mngun\\OneDrive\\Documents\\GitHub\\RaceDay-Part-3\\RaceDay.API\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAAABAAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-11-07T11:24:42.653Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 11,
               "Title": ".dockerignore",
               "DocumentMoniker": "C:\\Users\\mngun\\OneDrive\\Documents\\GitHub\\prog6212-p1-p2-p3-KhanyisileMnguni\\RaceDay.MVC\\.dockerignore",
               "RelativeDocumentMoniker": "..\\..\\prog6212-p1-p2-p3-KhanyisileMnguni\\RaceDay.MVC\\.dockerignore",
@@ -108,12 +160,11 @@
               "RelativeToolTip": "..\\..\\prog6212-p1-p2-p3-KhanyisileMnguni\\RaceDay.MVC\\.dockerignore",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-11-03T14:25:39.396Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-11-03T14:25:39.396Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 10,
               "Title": "Dockerfile",
               "DocumentMoniker": "C:\\Users\\mngun\\OneDrive\\Documents\\GitHub\\prog6212-p1-p2-p3-KhanyisileMnguni\\RaceDay.MVC\\Dockerfile",
               "RelativeDocumentMoniker": "..\\..\\prog6212-p1-p2-p3-KhanyisileMnguni\\RaceDay.MVC\\Dockerfile",
@@ -121,12 +172,11 @@
               "RelativeToolTip": "..\\..\\prog6212-p1-p2-p3-KhanyisileMnguni\\RaceDay.MVC\\Dockerfile",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-11-03T14:25:36.089Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-11-03T14:25:36.089Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 9,
               "Title": "CaptureResult.cshtml",
               "DocumentMoniker": "C:\\Users\\mngun\\OneDrive\\Documents\\GitHub\\prog6212-p1-p2-p3-KhanyisileMnguni\\RaceDay.MVC\\Views\\Events\\CaptureResult.cshtml",
               "RelativeDocumentMoniker": "..\\..\\prog6212-p1-p2-p3-KhanyisileMnguni\\RaceDay.MVC\\Views\\Events\\CaptureResult.cshtml",
@@ -134,12 +184,11 @@
               "RelativeToolTip": "..\\..\\prog6212-p1-p2-p3-KhanyisileMnguni\\RaceDay.MVC\\Views\\Events\\CaptureResult.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAEUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-10-31T16:50:30.76Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-31T16:50:30.76Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 8,
               "Title": "ManageParticipants.cshtml",
               "DocumentMoniker": "C:\\Users\\mngun\\OneDrive\\Documents\\GitHub\\prog6212-p1-p2-p3-KhanyisileMnguni\\RaceDay.MVC\\Views\\Events\\ManageParticipants.cshtml",
               "RelativeDocumentMoniker": "..\\..\\prog6212-p1-p2-p3-KhanyisileMnguni\\RaceDay.MVC\\Views\\Events\\ManageParticipants.cshtml",
@@ -147,12 +196,11 @@
               "RelativeToolTip": "..\\..\\prog6212-p1-p2-p3-KhanyisileMnguni\\RaceDay.MVC\\Views\\Events\\ManageParticipants.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAF0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-10-31T16:49:33.352Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-31T16:49:33.352Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\mngun\\OneDrive\\Documents\\GitHub\\prog6212-p1-p2-p3-KhanyisileMnguni\\RaceDay.MVC\\Views\\Events\\Create.cshtml",
               "RelativeDocumentMoniker": "..\\..\\prog6212-p1-p2-p3-KhanyisileMnguni\\RaceDay.MVC\\Views\\Events\\Create.cshtml",
@@ -160,25 +208,24 @@
               "RelativeToolTip": "..\\..\\prog6212-p1-p2-p3-KhanyisileMnguni\\RaceDay.MVC\\Views\\Events\\Create.cshtml",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAACMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-10-31T12:57:53.469Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-31T12:57:53.469Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 6,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\mngun\\OneDrive\\Documents\\GitHub\\prog6212-p1-p2-p3-KhanyisileMnguni\\RaceDay.MVC\\Views\\Events\\Index.cshtml",
               "RelativeDocumentMoniker": "..\\..\\prog6212-p1-p2-p3-KhanyisileMnguni\\RaceDay.MVC\\Views\\Events\\Index.cshtml",
               "ToolTip": "C:\\Users\\mngun\\OneDrive\\Documents\\GitHub\\prog6212-p1-p2-p3-KhanyisileMnguni\\RaceDay.MVC\\Views\\Events\\Index.cshtml",
               "RelativeToolTip": "..\\..\\prog6212-p1-p2-p3-KhanyisileMnguni\\RaceDay.MVC\\Views\\Events\\Index.cshtml",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAACYAAAA+AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADYAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-10-31T12:47:22.011Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "Participant.cshtml",
               "DocumentMoniker": "C:\\Users\\mngun\\OneDrive\\Documents\\GitHub\\prog6212-p1-p2-p3-KhanyisileMnguni\\RaceDay.MVC\\Views\\Dashboard\\Participant.cshtml",
               "RelativeDocumentMoniker": "..\\..\\prog6212-p1-p2-p3-KhanyisileMnguni\\RaceDay.MVC\\Views\\Dashboard\\Participant.cshtml",
@@ -190,7 +237,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "Organiser.cshtml",
               "DocumentMoniker": "C:\\Users\\mngun\\OneDrive\\Documents\\GitHub\\prog6212-p1-p2-p3-KhanyisileMnguni\\RaceDay.MVC\\Views\\Dashboard\\Organiser.cshtml",
               "RelativeDocumentMoniker": "..\\..\\prog6212-p1-p2-p3-KhanyisileMnguni\\RaceDay.MVC\\Views\\Dashboard\\Organiser.cshtml",

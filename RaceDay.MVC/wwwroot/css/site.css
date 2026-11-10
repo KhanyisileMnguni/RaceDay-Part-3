@@ -1,31 +1,709 @@
+/* ============================================================
+   RaceDay - Part 3 brand styles
+   Sporting, energetic theme. Colours:
+     Navy     #0B1F3A   (primary dark / navbar / footer)
+     Orange   #FF6B35   (accent / energy / CTAs)
+     Teal     #1CA9A6   (secondary success accent)
+     Light    #F5F7FA   (page background)
+   Typography: Barlow Condensed (headings), Inter (body).
+   ============================================================ */
+
+:root {
+    --rd-navy: #0B1F3A;
+    --rd-navy-2: #14305C;
+    --rd-orange: #FF6B35;
+    --rd-orange-dark: #E55A2B;
+    --rd-teal: #1CA9A6;
+    --rd-light: #F5F7FA;
+    --rd-muted: #6B7280;
+    --rd-border: #E5E9F0;
+    --rd-confirmed: #2BAE66;
+    --rd-pending: #F5A623;
+    --rd-problem: #E1483B;
+    --rd-neutral: #6B7280;
+}
+
 html {
-  font-size: 14px;
+    font-size: 15px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html { font-size: 16px; }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+html, body {
+    height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--rd-light);
+    color: #1F2937;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+h1, h2, h3, h4, h5,
+.page-title,
+.section-title,
+.event-title,
+.hero h1,
+.auth-head h1,
+.stat-number {
+    font-family: 'Barlow Condensed', 'Inter', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.01em;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+main.container {
+    flex: 1 0 auto;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
+}
+
+/* ---------- Focus ring ---------- */
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus,
+.form-control:focus, .form-select:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.15rem rgba(255, 107, 53, 0.35);
+}
+
+a { color: var(--rd-orange-dark); text-decoration: none; }
+a:hover { color: var(--rd-orange); text-decoration: underline; }
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.rd-navbar {
+    background: linear-gradient(120deg, var(--rd-navy) 0%, var(--rd-navy-2) 100%);
+    box-shadow: 0 2px 12px rgba(11, 31, 58, 0.18);
+    padding: 0.5rem 0;
+}
+
+.rd-brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 1.6rem;
+    letter-spacing: 0.04em;
+    color: #fff !important;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-transform: uppercase;
+}
+
+.rd-brand img { border-radius: 8px; }
+
+.rd-brand-accent { color: var(--rd-orange); }
+
+.rd-navbar .nav-link {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-weight: 500;
+    padding: 0.5rem 0.85rem !important;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: background-color 0.15s, color 0.15s;
+}
+
+.rd-navbar .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #fff !important;
+}
+
+.rd-navbar .nav-link.active {
+    background-color: var(--rd-orange);
+    color: #fff !important;
+}
+
+.rd-role-badge {
+    background: var(--rd-orange);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.25rem 0.5rem;
+    border-radius: 999px;
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn-rd {
+    background-color: var(--rd-orange);
+    border-color: var(--rd-orange);
+    color: #fff;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: background-color 0.15s, border-color 0.15s, transform 0.05s;
+}
+
+.btn-rd:hover,
+.btn-rd:focus {
+    background-color: var(--rd-orange-dark);
+    border-color: var(--rd-orange-dark);
+    color: #fff;
+}
+
+.btn-rd:active { transform: translateY(1px); }
+
+.btn-outline-rd {
+    border-color: var(--rd-orange);
+    color: var(--rd-orange-dark);
+    background-color: transparent;
+    font-weight: 600;
+    border-radius: 8px;
+}
+
+.btn-outline-rd:hover,
+.btn-outline-rd:focus {
+    background-color: var(--rd-orange);
+    border-color: var(--rd-orange);
+    color: #fff;
+}
+
+.text-rd-orange { color: var(--rd-orange) !important; }
+.text-rd-navy   { color: var(--rd-navy) !important; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.rd-footer {
+    flex-shrink: 0;
+    background: var(--rd-navy);
+    color: rgba(255, 255, 255, 0.9);
+    padding: 1.25rem 0;
+    margin-top: auto;
+    font-size: 0.9rem;
+}
+
+.rd-footer strong { color: var(--rd-orange); letter-spacing: 0.05em; }
+
+/* ============================================================
+   PAGE HEADINGS
+   ============================================================ */
+.page-title {
+    font-size: 1.9rem;
+    color: var(--rd-navy);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.page-title i { color: var(--rd-orange); }
+
+.section-title {
+    font-size: 1.3rem;
+    color: var(--rd-navy);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin: 1.5rem 0 0.75rem;
+    position: relative;
+    padding-bottom: 0.4rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 3px;
+    background: var(--rd-orange);
+    border-radius: 2px;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--rd-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.back-link:hover { color: var(--rd-orange); text-decoration: none; }
+
+/* ============================================================
+   HERO (home page)
+   ============================================================ */
+.hero {
+    background: linear-gradient(135deg, var(--rd-navy) 0%, var(--rd-navy-2) 60%, var(--rd-orange) 140%);
+    color: #fff;
+    border-radius: 18px;
+    padding: 3rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(11, 31, 58, 0.25);
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    right: -40px;
+    top: -40px;
+    width: 240px;
+    height: 240px;
+    background: radial-gradient(circle, rgba(255, 107, 53, 0.35) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.hero-content { position: relative; z-index: 1; max-width: 620px; }
+
+.hero-kicker {
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--rd-orange);
+    margin-bottom: 0.5rem;
+}
+
+.hero h1 {
+    font-size: 3.2rem;
+    line-height: 1.05;
+    margin-bottom: 1rem;
+    font-weight: 800;
+}
+
+.hero-sub {
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 1.5rem;
+    max-width: 540px;
+}
+
+.hero .btn-outline-light:hover {
+    background-color: #fff;
+    color: var(--rd-navy);
+}
+
+/* ============================================================
+   FILTER BAR
+   ============================================================ */
+.filter-bar {
+    border: 1px solid var(--rd-border);
+    border-radius: 14px;
+    box-shadow: 0 2px 8px rgba(11, 31, 58, 0.04);
+}
+
+.filter-bar .form-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--rd-muted);
+    margin-bottom: 0.25rem;
+}
+
+/* ============================================================
+   EVENT CARD (grid on home page)
+   ============================================================ */
+.event-card {
+    border: 1px solid var(--rd-border);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: transform 0.15s, box-shadow 0.15s;
+    background: #fff;
+}
+
+.event-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(11, 31, 58, 0.12);
+}
+
+.event-card-img {
+    display: block;
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background: var(--rd-navy);
+    overflow: hidden;
+}
+
+.event-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.event-card:hover .event-card-img img { transform: scale(1.05); }
+
+.type-pill {
+    position: absolute;
+    top: 0.6rem;
+    left: 0.6rem;
+    background: rgba(11, 31, 58, 0.85);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.3rem 0.6rem;
+    border-radius: 999px;
+    backdrop-filter: blur(4px);
+}
+
+.type-pill i { color: var(--rd-orange); }
+
+.event-title {
+    font-size: 1.2rem;
+    color: var(--rd-navy);
+    margin-bottom: 0.5rem;
+}
+
+.event-meta {
+    font-size: 0.88rem;
+    color: var(--rd-muted);
+}
+
+.event-meta li { margin-bottom: 0.2rem; }
+.event-meta i { color: var(--rd-orange); width: 1.1em; }
+
+/* ============================================================
+   EVENT DETAIL PAGE
+   ============================================================ */
+.event-hero {
+    border-radius: 16px;
+    background-size: cover;
+    background-position: center;
+    min-height: 280px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(11, 31, 58, 0.15);
+}
+
+.event-hero-overlay {
+    background: linear-gradient(180deg, rgba(11, 31, 58, 0.2) 0%, rgba(11, 31, 58, 0.85) 100%);
+    color: #fff;
+    padding: 2rem;
+    border-radius: 16px;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.event-hero-overlay h1 {
+    font-size: 2.4rem;
+    margin-bottom: 0.5rem;
+    font-weight: 800;
+}
+
+.event-hero-meta {
+    font-size: 0.95rem;
+    margin-bottom: 0;
+}
+
+.event-hero-meta li { margin-right: 1rem; }
+.event-hero-meta i { color: var(--rd-orange); margin-right: 0.25rem; }
+
+.info-card, .category-card, .form-card, .auth-card, .profile-card {
+    border: 1px solid var(--rd-border);
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(11, 31, 58, 0.04);
+}
+
+.category-card .h5 { color: var(--rd-navy); }
+
+.rd-progress {
+    background-color: var(--rd-border);
+    border-radius: 999px;
+    height: 8px;
+}
+
+.rd-progress .progress-bar {
+    background: var(--rd-teal);
+    border-radius: 999px;
+}
+
+/* ============================================================
+   STATUS BADGES (colour coded enrolment / result status)
+   ============================================================ */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+}
+
+.status-confirmed {
+    background-color: rgba(43, 174, 102, 0.15);
+    color: var(--rd-confirmed);
+    border: 1px solid rgba(43, 174, 102, 0.3);
+}
+
+.status-pending {
+    background-color: rgba(245, 166, 35, 0.15);
+    color: var(--rd-pending);
+    border: 1px solid rgba(245, 166, 35, 0.3);
+}
+
+.status-problem {
+    background-color: rgba(225, 72, 59, 0.15);
+    color: var(--rd-problem);
+    border: 1px solid rgba(225, 72, 59, 0.3);
+}
+
+.status-neutral {
+    background-color: rgba(107, 114, 128, 0.15);
+    color: var(--rd-neutral);
+    border: 1px solid rgba(107, 114, 128, 0.3);
+}
+
+/* ============================================================
+   TABLES
+   ============================================================ */
+.rd-table-wrap {
+    background: #fff;
+    border: 1px solid var(--rd-border);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(11, 31, 58, 0.04);
+}
+
+.rd-table {
+    margin-bottom: 0;
+    color: #1F2937;
+}
+
+.rd-table thead th {
+    background: var(--rd-navy);
+    color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 0.85rem;
+    border: none;
+    padding: 0.85rem 1rem;
+    white-space: nowrap;
+}
+
+.rd-table tbody td {
+    padding: 0.85rem 1rem;
+    border-top: 1px solid var(--rd-border);
+    vertical-align: middle;
+}
+
+.rd-table tbody tr:hover {
+    background-color: rgba(255, 107, 53, 0.04);
+}
+
+.time-cell {
+    font-family: 'Barlow Condensed', monospace;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--rd-navy);
+    letter-spacing: 0.02em;
+}
+
+/* Results-entry table: let the time/position inputs line up neatly */
+.result-form input.form-control-sm,
+.result-form select.form-select-sm {
+    border-radius: 6px;
+}
+
+/* ============================================================
+   STAT CARDS (dashboard / my results)
+   ============================================================ */
+.stat-card {
+    background: #fff;
+    border: 1px solid var(--rd-border);
+    border-radius: 14px;
+    padding: 1.25rem 1rem;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(11, 31, 58, 0.04);
+    height: 100%;
+}
+
+.stat-number {
+    font-size: 2.1rem;
+    color: var(--rd-orange);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+}
+
+.stat-label {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--rd-muted);
+    font-weight: 600;
+}
+
+/* ============================================================
+   EMPTY STATE (no events / no results)
+   ============================================================ */
+.empty-state {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    background: #fff;
+    border: 1px dashed var(--rd-border);
+    border-radius: 14px;
+    color: var(--rd-muted);
+}
+
+.empty-state i {
+    font-size: 3rem;
+    color: var(--rd-orange);
+    opacity: 0.6;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.empty-state h2 {
+    color: var(--rd-navy);
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.empty-state p { margin-bottom: 1rem; }
+
+.small-empty { padding: 1.5rem 1rem; }
+.small-empty i { font-size: 1.8rem; margin-bottom: 0.5rem; }
+
+/* ============================================================
+   AUTH (login / register) CARDS
+   ============================================================ */
+.auth-card {
+    overflow: hidden;
+    border: 1px solid var(--rd-border);
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(11, 31, 58, 0.08);
+}
+
+.auth-head {
+    background: linear-gradient(120deg, var(--rd-navy) 0%, var(--rd-navy-2) 100%);
+    color: #fff;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.auth-head i {
+    font-size: 2rem;
+    color: var(--rd-orange);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.auth-head h1 {
+    color: #fff;
+    font-size: 1.6rem;
+    margin-bottom: 0.25rem;
+}
+
+.auth-head p {
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 0;
+    font-size: 0.95rem;
+}
+
+/* ============================================================
+   FORMS
+   ============================================================ */
+.form-card { overflow: hidden; }
+
+.form-card .form-label,
+.auth-card .form-label,
+.profile-card .form-label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--rd-navy);
+    margin-bottom: 0.35rem;
+}
+
+.banner-preview {
+    max-width: 100%;
+    max-height: 180px;
+    border-radius: 10px;
+    border: 1px solid var(--rd-border);
+    object-fit: cover;
+}
+
+/* ============================================================
+   PROFILE PAGE
+   ============================================================ */
+.avatar-lg {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--rd-orange);
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.25);
+}
+
+/* ============================================================
+   ALERTS
+   ============================================================ */
+.rd-alert {
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 2px 8px rgba(11, 31, 58, 0.06);
+}
+
+.alert-success.rd-alert {
+    background-color: rgba(43, 174, 102, 0.12);
+    color: #1B6B45;
+    border-left: 4px solid var(--rd-confirmed);
+}
+
+.alert-danger.rd-alert {
+    background-color: rgba(225, 72, 59, 0.12);
+    color: #8C2A20;
+    border-left: 4px solid var(--rd-problem);
+}
+
+.alert-info.rd-alert {
+    background-color: rgba(28, 169, 166, 0.12);
+    color: #156E6C;
+    border-left: 4px solid var(--rd-teal);
+}
+
+.alert-warning {
+    border-radius: 10px;
+}
+
+/* ============================================================
+   MISC HELPERS
+   ============================================================ */
+.text-muted { color: var(--rd-muted) !important; }
+
+.form-text { color: var(--rd-muted); }
+
+/* The validation summary alert gets a tidy look */
+.alert.py-2 { padding: 0.5rem 0.75rem !important; }
+
+/* Keep the role toggle on the register page tidy */
+.btn-outline-rd.active,
+.btn-outline-rd:checked + label,
+.btn-check:checked + .btn-outline-rd {
+    background-color: var(--rd-orange);
+    border-color: var(--rd-orange);
+    color: #fff;
+}
+
+/* Make sure the navbar collapse looks good on mobile */
+@media (max-width: 991.98px) {
+    .rd-navbar .navbar-nav {
+        margin-top: 0.75rem;
+    }
+    .rd-navbar .nav-link {
+        justify-content: flex-start;
+    }
+    .hero h1 { font-size: 2.2rem; }
+    .hero { padding: 2rem 1.25rem; }
 }

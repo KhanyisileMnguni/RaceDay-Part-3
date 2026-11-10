@@ -1,15 +1,35 @@
-# Visual Studio
+# Visual Studio IDE state
 .vs/
 **/.vs/
+*.user
+*.suo
 
 # Build output
 **/bin/
 **/obj/
+[Dd]ebug/
+[Rr]elease/
 
-# Environment secrets
+# Environment secrets (NEVER commit these)
 .env
 **/.env
 *.env
 
 # Database backups
 *.bak
+
+# Test results
+TestResults/
+**/TestResults/
+
+# Publish folders
+**/publish/
+**/Published/
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Logs
+*.log
+logs/

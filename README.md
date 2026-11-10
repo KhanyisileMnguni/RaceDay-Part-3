@@ -224,9 +224,15 @@ https://youtu.be/05gTS_h3Tv8
 The RaceDay MVC web application is the front end for the Part 2 API. Organisers and Participants use it to create, browse,
 enter and track road running, walking and cycling events. The site has **no database code and no business logic of its own**:
 every piece of data comes from the Part 2 API, and every image upload goes through the API into Azure Blob Storage.
+<<<<<<< Updated upstream
 ```
 Unlisted YouTube link: Could not upload video due to internet issues
 ```
+=======
+
+> **YouTube demo video:** Replace this line with your unlisted YouTube link before submission, e.g. `https://youtu.be/XXXXXXXXXXX`.
+
+>>>>>>> Stashed changes
 ## Features
 
 | Area | What it does |
@@ -258,22 +264,49 @@ Requirements: Docker Desktop.
 <img width="952" height="1030" alt="Screenshot 2026-11-09 142412" src="https://github.com/user-attachments/assets/5b4eda4a-32a0-4140-9a1b-ff6f9cdcdce3" />
 
 1. Create your private settings file from the template and fill in the values (it is ignored by git and must never be committed):
-   Copy-Item .env.example .env
-   (on macOS/Linux: `cp .env.example .env`). Set `RACEDAY_DB_PASSWORD`, `RACEDAY_JWT_KEY` and, for image uploads,
-   `RACEDAY_AZURE_CONNECTION_STRING` (from the Azure portal: your storage account > Security + networking > Access keys).
-2. From the repository root, start SQL Server, the API and the MVC site:
+
+   ```bash
+   cp .env.example .env        # Windows PowerShell: Copy-Item .env.example .env
+   ```
+
+   Then edit `.env` and set:
+   - `RACEDAY_DB_PASSWORD` - a strong password for the SQL Server `sa` account.
+   - `RACEDAY_JWT_KEY` - a random secret of **at least 32 characters**.
+   - `RACEDAY_AZURE_CONNECTION_STRING` - from the Azure portal: your storage account > Security + networking > Access keys.
+
+2. From the repository root, start SQL Server, the API and the MVC site with a **single command**:
+
+   ```bash
    docker compose up --build
+   ```
+
 3. Open the site at **http://localhost:8080** and the API's Swagger page at **http://localhost:5285/swagger**.
 
-The API creates the database tables automatically the first time it starts. Stop everything with `Ctrl+C`, or `docker compose down`.
+The API creates the database tables automatically the first time it starts (EF Core migrations run on startup).
+Stop everything with `Ctrl+C`, or:
+
+```bash
+docker compose down          # stop and remove the containers
+docker compose down -v       # also wipe the SQL Server data volume for a clean start
+```
+
 The containerised site behaves the same as the one started from Visual Studio; only the API address differs, and it is passed in with the
 `ApiSettings__BaseUrl` environment variable.
 
 ### Run only the MVC site in Docker (API running on your computer)
 
+If the API is already running locally on port 5285, you can build and run just the MVC site in Docker:
+
+```bash
 dotnet run --project RaceDay.API --urls "http://0.0.0.0:5285"
 docker build -t raceday-mvc ./RaceDay.MVC
 docker run --rm -p 8080:8080 -e ApiSettings__BaseUrl=http://host.docker.internal:5285/ raceday-mvc
+<<<<<<< Updated upstream
+=======
+```
+
+The MVC site is then at **http://localhost:8080**. `host.docker.internal` lets the container reach the API running on your host machine.
+>>>>>>> Stashed changes
 <img width="931" height="1042" alt="Screenshot 2026-11-09 142454" src="https://github.com/user-attachments/assets/5a0419a5-6ff9-41bc-aee8-33bb4b004b4d" />
 <img width="763" height="1032" alt="Screenshot 2026-11-09 142444" src="https://github.com/user-attachments/assets/96b796d8-4870-4e75-8549-c8ce1c50b277" />
 <img width="837" height="1041" alt="Screenshot 2026-11-09 142436" src="https://github.com/user-attachments/assets/990e8a6a-e1cd-46e3-ae60-6c0a412dee5d" />

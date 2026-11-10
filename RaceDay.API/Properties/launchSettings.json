@@ -1,12 +1,23 @@
 {
+  "$schema": "https://json.schemastore.org/launchsettings.json",
   "profiles": {
-    "RaceDay.API": {
+    "RaceDay.API (HTTP)": {
       "commandName": "Project",
       "launchBrowser": true,
+      "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "https://localhost:47056;http://localhost:47057"
+      "applicationUrl": "http://localhost:5285"
+    },
+    "RaceDay.API (HTTPS)": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:7288;http://localhost:5285"
     }
   }
 }

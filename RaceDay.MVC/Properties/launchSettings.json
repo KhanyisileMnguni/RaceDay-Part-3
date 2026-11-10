@@ -1,12 +1,13 @@
 {
+  "$schema": "https://json.schemastore.org/launchsettings.json",
   "profiles": {
     "RaceDay.MVC": {
       "commandName": "Project",
       "launchBrowser": true,
+      "applicationUrl": "http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "https://localhost:47054;http://localhost:47055"
+      }
     }
   }
 }
