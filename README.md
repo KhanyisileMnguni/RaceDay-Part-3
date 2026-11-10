@@ -219,18 +219,14 @@ YouTube Video link:
 https://youtu.be/05gTS_h3Tv8
 
 # Part 3 - RaceDay Web Application (ASP.NET Core MVC, Azure Blob Storage, Docker)
-{Had internet issues, video could not upload. Included screenshots of the Azure Blob Storage that is called in SSMS as well as what the site (MVC) contains}
+{Had internet issues, apologies for the glitches}
 
 The RaceDay MVC web application is the front end for the Part 2 API. Organisers and Participants use it to create, browse,
 enter and track road running, walking and cycling events. The site has **no database code and no business logic of its own**:
 every piece of data comes from the Part 2 API, and every image upload goes through the API into Azure Blob Storage.
 <<<<<<< Updated upstream
-```
-Unlisted YouTube link: Could not upload video due to internet issues
-```
-=======
 
-> **YouTube demo video:** Replace this line with your unlisted YouTube link before submission, e.g. `https://youtu.be/XXXXXXXXXXX`.
+YouTube demo video: https://youtu.be/waULqR9J0CU
 
 >>>>>>> Stashed changes
 ## Features
