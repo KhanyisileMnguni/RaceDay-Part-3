@@ -223,9 +223,9 @@ https://youtu.be/05gTS_h3Tv8
 The RaceDay MVC web application is the front end for the Part 2 API. Organisers and Participants use it to create, browse,
 enter and track road running, walking and cycling events. The site has **no database code and no business logic of its own**:
 every piece of data comes from the Part 2 API, and every image upload goes through the API into Azure Blob Storage.
-
-Unlisted YouTube link:
-
+```
+Unlisted YouTube link: Could not upload video due to internet issues
+```
 ## Features
 
 | Area | What it does |
