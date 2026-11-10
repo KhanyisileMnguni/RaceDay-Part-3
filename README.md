@@ -261,8 +261,6 @@ Browser  ->  RaceDay.MVC (ASP.NET Core MVC, session)  ->  RaceDay.API (REST, JWT
 ## Run everything with Docker (one command)
 
 Requirements: Docker Desktop.
-<img width="952" height="1030" alt="Screenshot 2026-11-09 142412" src="https://github.com/user-attachments/assets/5b4eda4a-32a0-4140-9a1b-ff6f9cdcdce3" />
-
 1. Create your private settings file from the template and fill in the values (it is ignored by git and must never be committed):
 
    ```bash
@@ -306,12 +304,6 @@ docker run --rm -p 8080:8080 -e ApiSettings__BaseUrl=http://host.docker.internal
 ```
 
 The MVC site is then at **http://localhost:8080**. `host.docker.internal` lets the container reach the API running on your host machine.
->>>>>>> Stashed changes
-<img width="931" height="1042" alt="Screenshot 2026-11-09 142454" src="https://github.com/user-attachments/assets/5a0419a5-6ff9-41bc-aee8-33bb4b004b4d" />
-<img width="763" height="1032" alt="Screenshot 2026-11-09 142444" src="https://github.com/user-attachments/assets/96b796d8-4870-4e75-8549-c8ce1c50b277" />
-<img width="837" height="1041" alt="Screenshot 2026-11-09 142436" src="https://github.com/user-attachments/assets/990e8a6a-e1cd-46e3-ae60-6c0a412dee5d" />
-<img width="927" height="887" alt="Screenshot 2026-11-09 142419" src="https://github.com/user-attachments/assets/6b085495-a129-46a2-8efc-1ff14cbeff13" />
-<img width="952" height="1030" alt="Screenshot 2026-11-09 142412" src="https://github.com/user-attachments/assets/94c3a865-d258-46ad-83bc-73b7fc05ff90" />
 
 ## Run it locally (without Docker)
 
